@@ -46,6 +46,33 @@ import com.topic3.android.reddit.views.TrendingTopicView
 import java.util.Timer
 import kotlin.concurrent.schedule
 
+private val trendingItems = listOf( TrendingTopicModel(
+    "Compose Tutorial",
+    R.drawable.jetpack_composer
+),
+    TrendingTopicModel(
+        "Compose Animations",
+        R.drawable.jetpack_compose_animations
+    ),
+    TrendingTopicModel(
+        "Compose Migration",
+        R.drawable.compose_migration_crop
+    ),
+    TrendingTopicModel(
+        "DataStore Tutorial",
+        R.drawable.data_storage
+    ),
+    TrendingTopicModel(
+        "Android Animations",
+        R.drawable.android_animations
+    ),
+    TrendingTopicModel(
+        "Deep Links in Android",
+        R.drawable.deeplinking
+    )
+)
+
+
 @Composable
 fun HomeScreen(viewModel: MainViewModel) {
     val posts: List<PostModel> by viewModel.allPosts.observeAsState(listOf())
@@ -141,6 +168,12 @@ private fun TrendingTopic(trendingTopic: TrendingTopicModel){
             image = trendingTopic.imageRes
         }
     })
+}
+
+@Preview
+@Composable
+private fun TrendingTopicsPreview(){
+    TrendingTopics(trendingTopics = trendingItems)
 }
 
 @Preview(showBackground = true)
